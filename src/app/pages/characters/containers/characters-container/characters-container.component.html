@@ -2,9 +2,11 @@
   <mat-card class="mt-4">
       <mat-card-header>
       </mat-card-header>
-
       <mat-card-content >
-        <app-characters-list [dataSource]="dataSource$ | async"></app-characters-list>
+        <app-characters-list
+        [dataSource]="dataSource$ | async"
+        (characterDetail) = detail($event)
+        ></app-characters-list>
       </mat-card-content>
     </mat-card>
 </div>

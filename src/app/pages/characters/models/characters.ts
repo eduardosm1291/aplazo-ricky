@@ -15,8 +15,8 @@ export interface CharactersDetail {
   species:  string;
   type:     string;
   gender:   string;
-  origin:   Location;
-  location: Location;
+  origin?:   Location;
+  location?: Location;
   image:    string;
   episode:  string[];
   url:      string;

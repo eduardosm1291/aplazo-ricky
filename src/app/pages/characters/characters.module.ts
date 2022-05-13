@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CharactersRoutingModule } from './characters-routing.module';
@@ -14,6 +14,8 @@ import { characterReducer } from './store/reducer/characters.reducer';
 import { state } from '@angular/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { CharactersEffects } from './store/effects/characters.effects';
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [
     CharactersContainerComponent,
@@ -25,9 +27,11 @@ import { CharactersEffects } from './store/effects/characters.effects';
     CharactersRoutingModule,
     MatTableModule,
     MatCardModule,
+    RouterModule,
     HttpClientModule,
     StoreModule.forFeature( "charactersState", characterReducer),
     EffectsModule.forRoot([CharactersEffects])
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CharactersModule { }

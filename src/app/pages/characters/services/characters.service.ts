@@ -14,5 +14,8 @@ export class CharactersService {
   getAllCharacters() {
     return this.httpClient.get<any>(this.url + '/character');
   }
+  getCharactersDetail(id: number) {
+    return this.httpClient.get<any>(this.url + '/character/'+ id);
+  }
 }
 
