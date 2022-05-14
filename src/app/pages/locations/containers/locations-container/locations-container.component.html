@@ -1,1 +1,15 @@
-<p>locations-container works!</p>
+<div class="container">
+  <mat-card class="mt-4">
+      <mat-card-header>
+      </mat-card-header>
+      <mat-card-content >
+        <app-locations-list
+          [dataSource]="dataSource$ | async"
+          [pageInfo]=" dataInfo$ | async"
+          (characterDetail) = detail($event)
+          (page) ="getPaginatorData($event)"
+        ></app-locations-list>
+      </mat-card-content>
+    </mat-card>
+</div>
+

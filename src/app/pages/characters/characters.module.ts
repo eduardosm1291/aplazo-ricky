@@ -14,7 +14,9 @@ import { characterReducer } from './store/reducer/characters.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CharactersEffects } from './store/effects/characters.effects';
 import { RouterModule } from '@angular/router';
-    import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     CharactersContainerComponent,
@@ -24,6 +26,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     MatDialogModule,
+    MatPaginatorModule,
     CharactersRoutingModule,
     MatTableModule,
     MatCardModule,

@@ -4,12 +4,13 @@
       </mat-card-header>
       <mat-card-content >
         <app-characters-list
-        [dataSource]="dataSource$ | async"
-        (characterDetail) = detail($event)
+          [dataSource]="dataSource$ | async"
+          [pageInfo]=" dataInfo$ | async"
+          (characterDetail) = detail($event)
+          (page) ="getPaginatorData($event)"
         ></app-characters-list>
       </mat-card-content>
     </mat-card>
 </div>
 
 
-<router-outlet></router-outlet>

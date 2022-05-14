@@ -21,18 +21,8 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row  *matRowDef="let row; columns: displayedColumns;" (click)="characterDeatail(row)" ></mat-row>
+    <mat-row  *matRowDef="let row; columns: displayedColumns;" (click)="locationDetailEmit(row)" ></mat-row>
 
   </mat-table>
-  <mat-paginator [length]="pageInfo.count"
-    [pageSize]="20"
-    aria-label="Select page">
-    (page)="pageEvent = $event"
-  </mat-paginator>
-</div>
-<div *ngIf="pageEvent">
-  <h5>Page Change Event Properties</h5>
-  <div>List length: {{pageEvent.length}}</div>
-  <div>Page size: {{pageEvent.pageSize}}</div>
-  <div>Page index: {{pageEvent.pageIndex}}</div>
+
 </div>

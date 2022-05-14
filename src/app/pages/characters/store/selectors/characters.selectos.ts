@@ -14,3 +14,7 @@ export const getDetail = createSelector(
   getCharacterState,
   (state: CharacterState) => state.detail
 );
+export const getInfo = createSelector(
+  getCharacterState,
+  (state: CharacterState) => state.character.info
+);

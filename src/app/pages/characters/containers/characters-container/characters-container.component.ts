@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Actions } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
@@ -9,7 +10,7 @@ import { getFilter } from 'src/app/store/selector/app.selector';
 import { CharactersDetailComponent } from '../../components/characters-detail/characters-detail.component';
 import { CharactersDetail } from '../../models/characters';
 import { filterCharacter, getAllCharacters, getCharacterDetail, resetDetail } from '../../store/actions/characters.actions';
-import { getCharacterResult, getDetail } from '../../store/selectors/characters.selectos';
+import { getCharacterResult, getDetail, getInfo } from '../../store/selectors/characters.selectos';
 
 @Component({
   selector: 'app-characters-container',
@@ -18,6 +19,7 @@ import { getCharacterResult, getDetail } from '../../store/selectors/characters.
 })
 export class CharactersContainerComponent implements OnInit, OnDestroy {
   dataSource$: any ;
+  dataInfo$: any;
   subscription!: Subscription;
   constructor(
     private readonly store: Store,
@@ -28,6 +30,8 @@ export class CharactersContainerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.dispatch(getAllCharacters());
     this.dataSource$ = this.store.pipe( select(getCharacterResult));
+    this.dataInfo$ = this.store.pipe( select(getInfo));
+
     this.store.pipe(select(getFilter)).subscribe((filterData) =>{
       this.store.dispatch(filterCharacter({payload: filterData}));
     })
@@ -37,6 +41,10 @@ export class CharactersContainerComponent implements OnInit, OnDestroy {
     this.store.dispatch(getCharacterDetail({payload: row.id}));
     this.openDialog();
 
+  }
+  public getPaginatorData(event: PageEvent): PageEvent {
+    console.log(event);
+    return event;
   }
 
   openDialog(): void {
@@ -54,7 +62,6 @@ export class CharactersContainerComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
 }
