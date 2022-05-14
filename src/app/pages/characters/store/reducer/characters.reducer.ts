@@ -21,7 +21,14 @@ export const initialState: CharacterState = {
     species:  '',
     type:     '',
     gender:   '',
-
+    origin: {
+      name: '',
+      url: ''
+    },
+    location: {
+      name: '',
+      url: ''
+    },
     image:    '',
     episode:  [],
     url:      '',
