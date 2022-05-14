@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Characters, CharactersDetail } from "../../models/characters";
-import { getAllSuccessCharacters, getCharacterDetailSuccess, resetDetail } from "../actions/characters.actions";
+import { filterCharacterSuccess, getAllSuccessCharacters, getCharacterDetailSuccess, resetDetail } from "../actions/characters.actions";
 export interface CharacterState {
   character: Characters
   detail: CharactersDetail
@@ -46,6 +46,10 @@ export const characterReducer = createReducer(
     ...state,
     detail: initialState.detail
 
+  })),
+  on(filterCharacterSuccess, (state, {payload}) => ({
+    ...state,
+    character: payload
   }))
 
 );

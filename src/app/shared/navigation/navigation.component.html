@@ -16,7 +16,15 @@
           </div>
           <div>
             <div>
-              <input type="text">
+              <form #beaconForm="ngForm" autocomplete="off">
+                <input #searchBox
+                       id="search-query"
+                       name="search-query"
+                       [(ngModel)]="inputValue">
+                <button color="accent" mat-mini-fab (click)="action(searchBox.value)">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+                </button>
+             </form>
             </div>
           </div>
         </div>

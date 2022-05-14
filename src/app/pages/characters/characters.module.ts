@@ -11,12 +11,10 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { characterReducer } from './store/reducer/characters.reducer';
-import { state } from '@angular/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { CharactersEffects } from './store/effects/characters.effects';
 import { RouterModule } from '@angular/router';
     import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-    import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [
     CharactersContainerComponent,
