@@ -13,7 +13,7 @@ export const getAllErrorLocationss = createAction(
 );
 
 
-export const getLocationsDetail = createAction(
+export const getLocationsDetailAction = createAction(
   '[App Locationss] get detail',
   props<{ payload: number }>()
 );
@@ -25,7 +25,7 @@ export const LocationsError = createAction(
   '[App Locationss]  Error',
   props<{ error: any }>()
 );
-export const resetDetail = createAction(
+export const resetLocationDetail = createAction(
   '[App Locationss] reset detail',
 
 );

@@ -15,12 +15,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { LocationssEffects } from './store/effects/locations.effects';
 import { LocationsReducer } from './store/reducer/locations.reducer';
+import { LocationDetailComponent } from './components/location-detail/location-detail.component';
 
 
 @NgModule({
   declarations: [
     LocationsContainerComponent,
-    LocationsListComponent
+    LocationsListComponent,
+    LocationDetailComponent
   ],
   imports: [
     CommonModule,

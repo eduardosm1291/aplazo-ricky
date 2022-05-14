@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
 import { catchError, map, mergeMap } from "rxjs/operators";
 import { LocationsService } from "../../services/locations.service";
-import { filterLocations, getAllLocationss, getLocationsDetail } from "../actions/locations.actions";
+import { filterLocations, getAllLocationss, getLocationsDetailAction } from "../actions/locations.actions";
 
 @Injectable()
 export class LocationssEffects {
@@ -21,7 +21,7 @@ export class LocationssEffects {
   );
   loadDetail$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getLocationsDetail),
+      ofType(getLocationsDetailAction),
       mergeMap((action) => this.LocationssService.getLocationssDetail(action.payload)
         .pipe(
           map(item => ({ type: '[App Locationss] get detail Success', payload: item })),

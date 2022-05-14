@@ -11,18 +11,9 @@ export interface InfoLocations {
 export interface LocationssDetail {
   id:       number;
   name:     string;
-  status:   string;
-  species:  string;
+  dimension:  string;
   type:     string;
-  gender:   string;
-  origin?:   Location;
-  location?: Location;
-  image:    string;
-  episode:  string[];
+  residents:  string[];
   url:      string;
   created:  Date;
-}
-export interface Location {
-  name: string;
-  url:  string;
 }

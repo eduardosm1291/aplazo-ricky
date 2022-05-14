@@ -10,14 +10,14 @@
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="specie">
-      <mat-header-cell *matHeaderCellDef> Specie </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.species}} </mat-cell>
+    <ng-container matColumnDef="dimension">
+      <mat-header-cell *matHeaderCellDef> Dimension </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dimension}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

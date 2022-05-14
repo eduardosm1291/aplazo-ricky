@@ -14,15 +14,15 @@ export class LocationsService {
   ) { }
 
   getAllLocationss() {
-    return this.httpClient.get<Locationss>(this.url + '/Locations');
+    return this.httpClient.get<Locationss>(this.url + '/location');
   }
   getLocationssDetail(id: number) {
-    return this.httpClient.get<LocationssDetail>(this.url + '/Locations/'+ id);
+    return this.httpClient.get<LocationssDetail>(this.url + '/location/'+ id);
   }
   filterLocations(name: string) {
     let params: HttpParams;
     params = new HttpParams();
     params = params.append('name', name);
-    return this.httpClient.get(this.url + '/Locations/', {params});
+    return this.httpClient.get(this.url + '/location/', {params});
   }
 }

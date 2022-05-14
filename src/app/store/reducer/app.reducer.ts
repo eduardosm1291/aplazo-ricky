@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { filterData } from "../actions/app-actions";
+import { filterData, resetFilterData } from "../actions/app-actions";
 
 
 export interface AppState {
@@ -16,5 +16,9 @@ export const appReducer = createReducer(
   on(filterData, (state, {payload}) => ({
     ...state,
     filter: payload
+  })),
+  on(resetFilterData, (state) => ({
+    ...state,
+    filter: initialState.filter
   }))
 );

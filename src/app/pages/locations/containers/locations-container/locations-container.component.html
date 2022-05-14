@@ -6,7 +6,7 @@
         <app-locations-list
           [dataSource]="dataSource$ | async"
           [pageInfo]=" dataInfo$ | async"
-          (characterDetail) = detail($event)
+          (locationDetail) = detail($event)
           (page) ="getPaginatorData($event)"
         ></app-locations-list>
       </mat-card-content>

@@ -1,12 +1,12 @@
 import { createReducer, on } from "@ngrx/store";
 import { Locationss, LocationssDetail } from "../../models/locations";
-import { filterLocationsSuccess, getAllSuccessLocationss, getLocationsDetailSuccess, resetDetail } from "../actions/locations.actions";
+import { filterLocationsSuccess, getAllSuccessLocationss, getLocationsDetailSuccess, resetLocationDetail } from "../actions/locations.actions";
 export interface LocationsState {
-  Locations: Locationss
+  locations: Locationss
   detail: LocationssDetail
 }
 export const initialState: LocationsState = {
-  Locations: {
+  locations: {
     info: {
       count: 0,
       pages: 0,
@@ -17,16 +17,12 @@ export const initialState: LocationsState = {
   },
   detail: {
     id:       0,
-    status:   '',
-    species:  '',
-    type:     '',
-    gender:   '',
-
-    image:    '',
-    episode:  [],
-    url:      '',
-    created:  new Date(),
-    name:     '',
+  name:     '',
+  dimension:  '',
+  type:     '',
+  residents:  [],
+  url:      '',
+  created:  new Date()
   }
 };
 
@@ -34,7 +30,7 @@ export const LocationsReducer = createReducer(
   initialState,
   on(getAllSuccessLocationss, (state, {payload}) => ({
     ...state,
-    Locations: payload
+    locations: payload
 
   })),
   on(getLocationsDetailSuccess, (state, {payload}) => ({
@@ -42,14 +38,14 @@ export const LocationsReducer = createReducer(
     detail: payload
 
   })),
-  on(resetDetail, (state) => ({
+  on(resetLocationDetail, (state) => ({
     ...state,
     detail: initialState.detail
 
   })),
   on(filterLocationsSuccess, (state, {payload}) => ({
     ...state,
-    Locations: payload
+    locations: payload
   }))
 
 );

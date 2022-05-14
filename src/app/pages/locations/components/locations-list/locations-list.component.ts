@@ -11,7 +11,7 @@ export class LocationsListComponent implements OnInit {
   @Input()pageInfo: any;
   @Output() locationDetail: EventEmitter<any> = new EventEmitter();
   @Output() page = new EventEmitter<PageEvent>();
-  displayedColumns: string[] = ['id', 'name', 'status', 'specie'];
+  displayedColumns: string[] = ['id', 'name', 'type', 'dimension'];
   pageEvent!: PageEvent ;
   constructor() { }
 

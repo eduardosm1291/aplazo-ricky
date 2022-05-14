@@ -2,12 +2,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { select, Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { CharactersDetailComponent } from 'src/app/pages/characters/components/characters-detail/characters-detail.component';
-import { filterCharacter, getAllCharacters, getCharacterDetail, resetDetail } from 'src/app/pages/characters/store/actions/characters.actions';
-import { getCharacterResult, getDetail, getInfo } from 'src/app/pages/characters/store/selectors/characters.selectos';
+import { resetFilterData } from 'src/app/store/actions/app-actions';
 import { getFilter } from 'src/app/store/selector/app.selector';
+import { LocationDetailComponent } from '../../components/location-detail/location-detail.component';
+import { LocationssDetail } from '../../models/locations';
+import { filterLocations, getAllLocationss, getLocationsDetailAction, resetLocationDetail } from '../../store/actions/locations.actions';
+import { getLocationDetail, getLocationInfo, getLocationResult } from '../../store/selectors/locations.selectos';
 
 @Component({
   selector: 'app-locations-container',
@@ -18,7 +21,8 @@ export class LocationsContainerComponent implements OnInit, OnDestroy{
 
   dataSource$: any ;
   dataInfo$: any;
-  subscription!: Subscription;
+  filterSuscription$!: Subscription;
+  private ngUnsubscribe = new Subject<void>();
   constructor(
     private readonly store: Store,
     public dialog: MatDialog
@@ -26,17 +30,20 @@ export class LocationsContainerComponent implements OnInit, OnDestroy{
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(getAllCharacters());
-    this.dataSource$ = this.store.pipe( select(getCharacterResult));
-    this.dataInfo$ = this.store.pipe( select(getInfo));
+    this.store.dispatch(getAllLocationss());
+    this.dataSource$ = this.store.pipe( select(getLocationResult));
+    this.dataInfo$ = this.store.pipe( select(getLocationInfo));
 
-    this.store.pipe(select(getFilter)).subscribe((filterData: any) =>{
-      this.store.dispatch(filterCharacter({payload: filterData}));
+    this.filterSuscription$ = this.store.pipe(
+      select(getFilter),
+      filter((data)  => data !== '')
+    ).subscribe((filterData: string) => {
+      this.store.dispatch(filterLocations({payload: filterData}));
     })
 
   }
-  detail(row: any) {
-    this.store.dispatch(getCharacterDetail({payload: row.id}));
+  detail(row: LocationssDetail) {
+    this.store.dispatch(getLocationsDetailAction({payload: row.id}));
     this.openDialog();
 
   }
@@ -47,18 +54,21 @@ export class LocationsContainerComponent implements OnInit, OnDestroy{
 
   openDialog(): void {
     this.store.pipe(
-      select(getDetail),
+      select(getLocationDetail),
       filter ((data) => data.id >0),
       take(1)).subscribe((data) => {
-      const dialogRef = this.dialog.open(CharactersDetailComponent, {
+      const dialogRef = this.dialog.open(LocationDetailComponent, {
         width: '650px',
         data
       });
       dialogRef.afterClosed().subscribe(result => {
-        this.store.dispatch(resetDetail());
+        this.store.dispatch(resetLocationDetail());
       });
     });
   }
   ngOnDestroy() {
+    this.ngUnsubscribe.unsubscribe();
+    this.filterSuscription$.unsubscribe();
+    this.store.dispatch(resetFilterData())
   }
 }

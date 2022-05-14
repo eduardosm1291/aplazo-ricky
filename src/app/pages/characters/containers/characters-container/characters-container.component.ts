@@ -4,8 +4,9 @@ import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Actions } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
-import { filter, take } from 'rxjs/operators';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { filter, take, takeUntil } from 'rxjs/operators';
+import { resetFilterData } from 'src/app/store/actions/app-actions';
 import { getFilter } from 'src/app/store/selector/app.selector';
 import { CharactersDetailComponent } from '../../components/characters-detail/characters-detail.component';
 import { CharactersDetail } from '../../models/characters';
@@ -20,7 +21,9 @@ import { getCharacterResult, getDetail, getInfo } from '../../store/selectors/ch
 export class CharactersContainerComponent implements OnInit, OnDestroy {
   dataSource$: any ;
   dataInfo$: any;
-  subscription!: Subscription;
+  filterSuscriptionCharacter$!: Subscription;
+  private ngUnsubscribe = new Subject<void>();
+
   constructor(
     private readonly store: Store,
     public dialog: MatDialog
@@ -32,7 +35,10 @@ export class CharactersContainerComponent implements OnInit, OnDestroy {
     this.dataSource$ = this.store.pipe( select(getCharacterResult));
     this.dataInfo$ = this.store.pipe( select(getInfo));
 
-    this.store.pipe(select(getFilter)).subscribe((filterData) =>{
+    this.filterSuscriptionCharacter$ = this.store.pipe(select(getFilter),
+    filter((data)  => data !== ''),
+    takeUntil(this.ngUnsubscribe)
+    ).subscribe((filterData) =>{
       this.store.dispatch(filterCharacter({payload: filterData}));
     })
 
@@ -62,6 +68,10 @@ export class CharactersContainerComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
+
+    this.ngUnsubscribe.unsubscribe();
+    this.filterSuscriptionCharacter$.unsubscribe();
+    this.store.dispatch(resetFilterData())
   }
 
 }
