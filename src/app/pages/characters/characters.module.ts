@@ -15,7 +15,8 @@ import { state } from '@angular/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { CharactersEffects } from './store/effects/characters.effects';
 import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+    import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+    import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [
     CharactersContainerComponent,
@@ -24,6 +25,7 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   imports: [
     CommonModule,
+    MatDialogModule,
     CharactersRoutingModule,
     MatTableModule,
     MatCardModule,
@@ -32,6 +34,14 @@ import { BrowserModule } from '@angular/platform-browser';
     StoreModule.forFeature( "charactersState", characterReducer),
     EffectsModule.forRoot([CharactersEffects])
   ],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+
+ ],
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CharactersModule { }

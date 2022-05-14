@@ -26,3 +26,7 @@ export const getCharacterDetailError = createAction(
   '[App Characters] get detail Error',
   props<{ error: any }>()
 );
+export const resetDetail = createAction(
+  '[App Characters] reset detail',
+
+);

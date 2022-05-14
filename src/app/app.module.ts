@@ -10,16 +10,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { appReducer } from './store/reducer/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
+    SharedModule,
     MatCardModule,
     HttpClientModule,
     StoreModule.forRoot({ app: appReducer }), StoreDevtoolsModule.instrument(),

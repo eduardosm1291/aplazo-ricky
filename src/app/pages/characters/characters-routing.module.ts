@@ -5,16 +5,16 @@ import { CharactersContainerComponent } from './containers/characters-container/
 
 const routes: Routes = [
   {
-  path: '',
-  pathMatch: 'full',
-  component: CharactersContainerComponent,
-    children: [
-      { path: 'detail',
-      pathMatch: 'full',
-      component: CharactersDetailComponent
-      },
-    ]
+    path: '',
+    component: CharactersContainerComponent,
+
   },
+  { path: 'detail',
+    pathMatch: 'full',
+    component: CharactersDetailComponent
+  },
+
+
 
 
 

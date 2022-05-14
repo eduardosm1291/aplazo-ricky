@@ -17,7 +17,6 @@ export class CharactersListComponent implements OnInit {
   ngOnInit(): void {
   }
   characterDeatail( item: CharactersDetail) {
-    console.log(item);
     this.characterDetail.emit(item);
   }
 

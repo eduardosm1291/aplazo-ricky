@@ -5,23 +5,13 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo:'characteres'
+    redirectTo:'dashboard'
   },
   {
-    path: 'characters',
-    pathMatch: 'full',
-    loadChildren: () => import('./pages/characters/characters.module').then(m => m.CharactersModule)
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
-  {
-    path: 'locations',
-    pathMatch: 'full',
-    loadChildren: () => import('./pages/locations/locations.module').then(m => m.LocationsModule)
-  },
-  {
-    path: 'episodes',
-    pathMatch: 'full',
-    loadChildren: () => import('./pages/episodes/episodes.module').then(m => m.EpisodesModule)
-  }
+
 
 ];
 

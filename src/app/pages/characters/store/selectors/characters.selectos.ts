@@ -9,3 +9,8 @@ export const getCharacterResult = createSelector(
   getCharacterState,
   (state: CharacterState) => state.character.results
 );
+
+export const getDetail = createSelector(
+  getCharacterState,
+  (state: CharacterState) => state.detail
+);
