@@ -9,6 +9,12 @@
     <div class="detail-info">
       <p>Type: {{data.type}}</p>
       <p>Dimension: {{data.dimension}}</p>
+      <section class="characters">
+        <span>Characters</span>
+        <ul >
+          <li *ngFor="let item of data.residents"><a href="{{item}}" target="_blank">{{item}}</a></li>
+        </ul>
+      </section>
       <p>Url: <a href="{{data.url}}" target="_blank">{{data.url}}</a></p>
     </div>
   </div>
