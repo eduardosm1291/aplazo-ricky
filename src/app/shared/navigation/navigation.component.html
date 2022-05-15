@@ -1,30 +1,32 @@
 
 <mat-toolbar color="primary">
-  <span>Aplazo</span>
+  <div class="logo">
+    <img src="../../../assets/img/aplazo-logo.png" alt="">
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12 col-md-6, col-sm-12" >
         <div class="pages-container">
           <div>
-            <button routerLink="characters" >Charater</button>
+            <div routerLink="characters" class="options" >Charater</div>
           </div>
           <div>
-            <button [routerLink]="['locations']" >Locations</button>
+            <div [routerLink]="['locations']" class="options" >Locations</div>
           </div>
           <div>
-            <button [routerLink]="['episodes']" >Episodes</button>
+            <div [routerLink]="['episodes']"  class="options" >Episodes</div>
           </div>
           <div>
+
             <div>
-              <form #beaconForm="ngForm" autocomplete="off">
+              <form  >
+                <label for="search">Search for stuff</label>
                 <input #searchBox
-                       id="search-query"
-                       name="search-query"
-                       [(ngModel)]="inputValue">
-                <button color="accent" mat-mini-fab (click)="action(searchBox.value)">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
-                </button>
-             </form>
+                id="search-query"
+                name="search-query"
+                placeholder="Search..." >
+                <button (click)="search(searchBox.value)">Go</button>
+              </form>
             </div>
           </div>
         </div>

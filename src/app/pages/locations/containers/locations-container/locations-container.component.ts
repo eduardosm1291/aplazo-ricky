@@ -36,7 +36,6 @@ export class LocationsContainerComponent implements OnInit, OnDestroy{
 
     this.filterSuscription$ = this.store.pipe(
       select(getFilter),
-      filter((data)  => data !== '')
     ).subscribe((filterData: string) => {
       this.store.dispatch(filterLocations({payload: filterData}));
     })

@@ -1,3 +1,7 @@
 .mat-row {
   cursor: pointer;
 }
+::ng-deep .highlight{
+  color: white;
+  background: #673AB7;
+}

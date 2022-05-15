@@ -34,7 +34,6 @@ export class EpisodesContainerComponent implements OnInit {
 
     this.filterSuscription$ = this.store.pipe(
       select(getFilter),
-      filter((data)  => data !== '')
     ).subscribe((filterData: string) => {
       this.store.dispatch(filterEpisodes({payload: filterData}));
     })

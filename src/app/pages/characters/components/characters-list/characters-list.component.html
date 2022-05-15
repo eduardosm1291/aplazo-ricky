@@ -21,7 +21,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row  *matRowDef="let row; columns: displayedColumns;" (click)="characterDeatail(row)" ></mat-row>
+    <mat-row  *matRowDef="let row; columns: displayedColumns;" (click)="characterDeatail(row)"  [ngClass]="{'highlight': row.isSeen }"></mat-row>>
 
   </mat-table>
   <mat-paginator [length]="pageInfo.count"

@@ -25,7 +25,7 @@ export class NavigationComponent implements OnInit {
     }
     );
   }
-  action(value: string) {
+  search(value: string) {
     this.inputValue = value;
     this.store.dispatch(filterData({payload: this.inputValue}))
   }

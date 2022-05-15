@@ -36,7 +36,6 @@ export class CharactersContainerComponent implements OnInit, OnDestroy {
     this.dataInfo$ = this.store.pipe( select(getInfo));
 
     this.filterSuscriptionCharacter$ = this.store.pipe(select(getFilter),
-    filter((data)  => data !== ''),
     takeUntil(this.ngUnsubscribe)
     ).subscribe((filterData) =>{
       this.store.dispatch(filterCharacter({payload: filterData}));
