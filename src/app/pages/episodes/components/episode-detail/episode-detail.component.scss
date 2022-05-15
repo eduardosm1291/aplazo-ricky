@@ -1,0 +1,27 @@
+.detail-container {
+  display: flex;
+  img {
+
+  transition: transform .2s; /* Animation */
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  }
+  img:hover {
+    transform: scale(.8);
+  }
+ .detail-info{
+   margin-left: 10%;
+   p {
+     font-size:20px;
+   }
+   .characters {
+    max-height: 200px;
+    overflow: scroll;
+    margin-bottom: 20px;
+   }
+ }
+}
+.title {
+  text-align: center;
+}

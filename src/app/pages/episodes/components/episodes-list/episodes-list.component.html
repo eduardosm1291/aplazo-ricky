@@ -1,0 +1,28 @@
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" >
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="air_date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.air_date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="episode">
+      <mat-header-cell *matHeaderCellDef> Dimension </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.episode}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row  *matRowDef="let row; columns: displayedColumns;" (click)="episodeDetailEmit(row)" ></mat-row>
+
+  </mat-table>
+
+</div>

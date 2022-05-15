@@ -1,1 +1,15 @@
-<p>episodes-container works!</p>
+<div class="container">
+  <mat-card class="mt-4">
+      <mat-card-header>
+      </mat-card-header>
+      <mat-card-content >
+        <app-episodes-list
+          [dataSource]="dataSource$ | async"
+          [pageInfo]=" dataInfo$ | async"
+          (episodeDetail) = detail($event)
+          (page) ="getPaginatorData($event)"
+        ></app-episodes-list>
+      </mat-card-content>
+    </mat-card>
+</div>
+

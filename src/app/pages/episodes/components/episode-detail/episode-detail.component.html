@@ -1,0 +1,21 @@
+<div>
+  <div class="title">
+    <h3>{{data.episode}}</h3>
+  </div>
+  <div class="detail-container">
+
+
+
+    <div class="detail-info">
+      <p>Name: {{data.name}}</p>
+      <p>Date: {{data.air_date}}</p>
+      <section class="characters">
+        <span>Characters</span>
+        <ul >
+          <li *ngFor="let item of data.characters"><a href="{{item}}" target="_blank">{{item}}</a></li>
+        </ul>
+      </section>
+      <p>Url: <a href="{{data.url}}" target="_blank">{{data.url}}</a></p>
+    </div>
+  </div>
+</div>
