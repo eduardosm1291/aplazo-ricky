@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { provideMockStore } from '@ngrx/store/testing';
+import { initialState } from '../../store/reducer/locations.reducer';
 
 import { LocationsContainerComponent } from './locations-container.component';
 
@@ -8,7 +11,11 @@ describe('LocationsContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LocationsContainerComponent ]
+      declarations: [ LocationsContainerComponent ],
+      imports: [ MatDialogModule],
+      providers: [{ provide: MatDialogRef, useValue: {} },
+        provideMockStore({ initialState }),
+      ]
     })
     .compileComponents();
   });
